@@ -3,21 +3,31 @@ using System.Collections.Generic;
 
 public class TerrainManager : MonoBehaviour
 {
+    [Header("References")]
     public Transform player;
     public GameObject chunkPrefab;
+
+    [Header("Initial Settings")]
     public int initialChunks = 5;
-    public float init_x = 0f;
-    public float init_y = 0f;
-    public float chunkSpacing = 0f; // optional gap
+    public float initX = 0f;
+    public float initY = 0f;
+    public float chunkSpacing = 0f; // optional gap between chunks
+
+    [Header("Spawn Settings")]
+    public float spawnDistanceAhead = 30f;
+    public float removeDistanceBehind = 30f;
 
     private List<TerrainChunk> chunks = new List<TerrainChunk>();
+
     private float lastChunkEndX;
     private float lastChunkEndY;
+    private float perlinX;
 
     void Start()
     {
-        lastChunkEndX = init_x;
-        lastChunkEndY = init_y;
+        lastChunkEndX = initX;
+        lastChunkEndY = initY;
+        perlinX = 0f;
 
         // Generate initial chunks
         for (int i = 0; i < initialChunks; i++)
@@ -29,46 +39,36 @@ public class TerrainManager : MonoBehaviour
     void Update()
     {
         // Spawn new chunks ahead
-        if (player.position.x > lastChunkEndX - 30f)
+        if (player.position.x > lastChunkEndX - (spawnDistanceAhead * initialChunks))
         {
             SpawnChunk();
         }
 
-        // Remove chunks behind player
-        if (chunks.Count > 0 && chunks[0].GetEndX() < player.position.x - 30f)
+        // Remove chunks behind
+        while (chunks.Count > 0 && chunks[0].GetEndX() < player.position.x - removeDistanceBehind)
         {
             Destroy(chunks[0].gameObject);
             chunks.RemoveAt(0);
         }
     }
 
-    // void SpawnChunk()
-    // {
-    //     Vector3 spawnPos = new Vector3(lastChunkEndX, lastChunkEndY, 0f);
-    //     GameObject obj = Instantiate(chunkPrefab, spawnPos, Quaternion.identity);
-    //     TerrainChunk chunk = obj.GetComponent<TerrainChunk>();
-
-    //     chunk.Generate(lastChunkEndX, lastChunkEndY, true); // generate relative to local origin
-
-    //     // Update the next spawn position
-    //     lastChunkEndX += (chunk.points - 1) * chunk.spacing;
-    //     lastChunkEndY = chunk.GetEndHeight() + spawnPos.y; // convert back to world Y
-
-    //     chunks.Add(chunk);
-    // }
-
     void SpawnChunk()
-{
-    Vector3 spawnPos = new Vector3(lastChunkEndX, lastChunkEndY, 0f);
-    GameObject obj = Instantiate(chunkPrefab, spawnPos, Quaternion.identity);
-    TerrainChunk chunk = obj.GetComponent<TerrainChunk>();
+    {
+        Vector3 spawnPos = new Vector3(lastChunkEndX + chunkSpacing, lastChunkEndY, 0f);
 
-    chunk.Generate(0f, 0f, true); // generate relative to local origin
+        GameObject obj = Instantiate(chunkPrefab, spawnPos, Quaternion.identity);
+        TerrainChunk chunk = obj.GetComponent<TerrainChunk>();
 
-    // Update the next spawn position using actual world end of the chunk
-    lastChunkEndX = chunk.transform.position.x + (chunk.points - 1) * chunk.spacing;
-    lastChunkEndY = chunk.GetEndHeight() + chunk.transform.position.y;
+        // Generate chunk with continuity
+        chunk.Generate(perlinX, lastChunkEndY);
 
-    chunks.Add(chunk);
-}
+        // Update perlinX so the next chunk continues the terrain slope
+        perlinX += chunk.GetWidth();
+
+        // Update last chunk end positions for next spawn
+        lastChunkEndX = spawnPos.x + chunk.GetWidth();
+        lastChunkEndY = chunk.GetEndHeight() + spawnPos.y - lastChunkEndY;
+
+        chunks.Add(chunk);
+    }
 }

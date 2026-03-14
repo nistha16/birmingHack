@@ -388,9 +388,11 @@ MonoBehaviour:
   player: {fileID: 990744502}
   chunkPrefab: {fileID: 8421107616347136729, guid: eb7b789af1ea14f889d4248d9c70b807, type: 3}
   initialChunks: 3
-  init_x: -8
-  init_y: 0
+  initX: -10
+  initY: 0
   chunkSpacing: 0
+  spawnDistanceAhead: 30
+  removeDistanceBehind: 30
 --- !u!4 &719243186
 Transform:
   m_ObjectHideFlags: 0

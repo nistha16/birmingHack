@@ -4,6 +4,7 @@ using UnityEngine.U2D;
 [RequireComponent(typeof(SpriteShapeController))]
 public class TerrainChunk : MonoBehaviour
 {
+    [Header("Terrain Settings")]
     public int points = 10;
     public float spacing = 1f;
     public float amplitude = 4f;
@@ -14,7 +15,12 @@ public class TerrainChunk : MonoBehaviour
     private SpriteShapeController shape;
     private float[] heights;
 
-    public void Generate(float startX, float startY, bool useLocalSpace = true)
+    /// <summary>
+    /// Generate a chunk relative to its transform.
+    /// perlinStartX ensures continuity across chunks.
+    /// startY is the height of the first point.
+    /// </summary>
+    public void Generate(float perlinStartX, float startY)
     {
         shape = GetComponent<SpriteShapeController>();
         var spline = shape.spline;
@@ -22,33 +28,27 @@ public class TerrainChunk : MonoBehaviour
 
         heights = new float[points];
 
+        // Generate top points
         for (int i = 0; i < points; i++)
         {
-            float x = i * spacing; // local x
-            float y = Mathf.PerlinNoise((startX + x) * frequency, 0) * amplitude - (startX + x) * slope;
-            if (i == 0) y = startY;
+            float localX = i * spacing;
+            float y = Mathf.PerlinNoise((perlinStartX + localX) * frequency, 0f) * amplitude - (perlinStartX + localX) * slope;
+
+            if (i == 0) y = startY; // connect first point to previous chunk
 
             heights[i] = y;
 
-            if (useLocalSpace)
-                spline.InsertPointAt(i, new Vector3(x, y - startY, 0)); // local coords
-            else
-                spline.InsertPointAt(i, new Vector3(startX + x, y, 0)); // world coords
-
+            spline.InsertPointAt(i, new Vector3(localX, y - startY, 0f));
             spline.SetTangentMode(i, ShapeTangentMode.Continuous);
         }
 
-        // bottom edge
+        // Bottom edge for collider
         for (int i = points - 1; i >= 0; i--)
         {
-            float x = i * spacing;
+            float localX = i * spacing;
             float y = heights[i] - depth;
-
             int index = points + (points - 1 - i);
-            if (useLocalSpace)
-                spline.InsertPointAt(index, new Vector3(x, y - startY, 0));
-            else
-                spline.InsertPointAt(index, new Vector3(startX + x, y, 0));
+            spline.InsertPointAt(index, new Vector3(localX, y - startY, 0f));
         }
 
         spline.isOpenEnded = false;
@@ -64,5 +64,9 @@ public class TerrainChunk : MonoBehaviour
     {
         return transform.position.x + (points - 1) * spacing;
     }
-}
 
+    public float GetWidth()
+    {
+        return (points - 1) * spacing;
+    }
+}

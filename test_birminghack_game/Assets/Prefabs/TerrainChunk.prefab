@@ -240,9 +240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22460b107c3634199a7ee4f7615bdf50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TerrainChunk
-  points: 10
-  spacing: 3
+  points: 20
+  spacing: 4
   amplitude: 4
-  frequency: 0.2
-  slope: 0.2
-  depth: 10
+  frequency: 0.08
+  slope: 0.1
+  depth: 20
