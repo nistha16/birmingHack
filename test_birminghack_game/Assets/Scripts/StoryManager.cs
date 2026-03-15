@@ -14,6 +14,7 @@ public class StoryManager : MonoBehaviour
     public GameObject questionPanel;
     public float baseQuestionDistance = 50f;
 
+    private StoriesData allStories;
     private StoryData storyData;
     private int currentScenario = 0;
     private float nextQuestionX;
@@ -33,7 +34,17 @@ public class StoryManager : MonoBehaviour
     void Start()
     {
         TextAsset jsonFile = Resources.Load<TextAsset>("storyline");
-        storyData = JsonUtility.FromJson<StoryData>(jsonFile.text);
+        allStories = JsonUtility.FromJson<StoriesData>(jsonFile.text);
+        storyData = allStories.stories[Random.Range(0, allStories.stories.Length)];
+
+        // shuffle scenarios order
+        for (int i = storyData.scenarios.Length - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            Scenario temp = storyData.scenarios[i];
+            storyData.scenarios[i] = storyData.scenarios[j];
+            storyData.scenarios[j] = temp;
+        }
 
         key1 = new InputAction("Key1", binding: "<Keyboard>/1");
         key2 = new InputAction("Key2", binding: "<Keyboard>/2");
@@ -124,7 +135,15 @@ public class StoryManager : MonoBehaviour
         if (currentScenario >= storyData.scenarios.Length) return;
 
         float spawnX = player.position.x + nextQuestionX;
-        float spawnY = player.position.y - 1.5f;
+
+        // raycast down from high up to find terrain surface at spawn point
+        float spawnY = player.position.y + 2f; // default fallback
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(spawnX, 50f), Vector2.down, 100f);
+        if (hit.collider != null)
+        {
+            spawnY = hit.point.y + 2f; // 2 units above terrain
+        }
+
         Vector3 spawnPos = new Vector3(spawnX, spawnY, 0f);
 
         cloudTriggered = false;
@@ -260,6 +279,12 @@ public class StoryManager : MonoBehaviour
         spaceKey.Disable();
         Time.timeScale = 1f;
     }
+}
+
+[System.Serializable]
+public class StoriesData
+{
+    public StoryData[] stories;
 }
 
 [System.Serializable]
