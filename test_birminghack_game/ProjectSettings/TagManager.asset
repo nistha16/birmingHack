@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - GameManager
   - Obstacle
+  - QuestionCloud
   layers:
   - Default
   - TransparentFX
