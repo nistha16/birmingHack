@@ -1,0 +1,100 @@
+{
+  "storyline": [
+    "The year is 2050 - the rise of AI has brought an end to ground truth as we know it. Alex is trying to navigate a new world. He cannot differentiate what's real and fake.",
+    "The city runs on information. Every screen, every voice, every message could be real or generated.",
+    "Alex grabs his board. The only way to find the truth is to keep moving.",
+    "But the further he goes, the harder it gets to tell what's real."
+  ],
+  "scenarios": [
+    {
+      "scenario": "A news ticker scrolls across a building: a new virus has been detected in the city.",
+      "question": "What do you believe?",
+      "possible_answers": [
+        { "correct": true, "response": "Check the city health department records before panicking" },
+        { "correct": false, "response": "It must be true - share it with everyone immediately" },
+        { "correct": false, "response": "Ignore all health warnings - they are always fake" }
+      ]
+    },
+    {
+      "scenario": "A voice from a speaker claims the government has shut down all schools permanently.",
+      "question": "How do you respond?",
+      "possible_answers": [
+        { "correct": false, "response": "Schools are useless anyway - AI teaches everything now" },
+        { "correct": true, "response": "Look for an official source before accepting this as fact" },
+        { "correct": false, "response": "Start protesting immediately based on this announcement" }
+      ]
+    },
+    {
+      "scenario": "A stranger hands Alex a device showing a video of the mayor saying something shocking.",
+      "question": "What should Alex do?",
+      "possible_answers": [
+        { "correct": false, "response": "Believe it - video is always real" },
+        { "correct": false, "response": "Destroy the device so nobody sees it" },
+        { "correct": true, "response": "Consider that the video could be a deepfake and verify it" }
+      ]
+    },
+    {
+      "scenario": "A popular social feed says clean water will run out in 24 hours.",
+      "question": "What is the smart move?",
+      "possible_answers": [
+        { "correct": false, "response": "Hoard as much water as possible right now" },
+        { "correct": true, "response": "Check if the claim comes from a verified source before reacting" },
+        { "correct": false, "response": "Water cannot run out so ignore it completely" }
+      ]
+    },
+    {
+      "scenario": "An AI assistant tells Alex that his friend has been spreading misinformation.",
+      "question": "What should Alex do?",
+      "possible_answers": [
+        { "correct": false, "response": "Cut off his friend immediately - AI is always right" },
+        { "correct": true, "response": "Talk to his friend directly and hear their side" },
+        { "correct": false, "response": "Report his friend to the authorities without asking" }
+      ]
+    },
+    {
+      "scenario": "A headline reads: AI has solved climate change. The planet is saved.",
+      "question": "How should Alex react?",
+      "possible_answers": [
+        { "correct": false, "response": "Celebrate - no need to worry about the environment anymore" },
+        { "correct": false, "response": "Climate change was never real in the first place" },
+        { "correct": true, "response": "Be hopeful but look into what was actually done and by whom" }
+      ]
+    },
+    {
+      "scenario": "Two different news sources give opposite stories about a protest downtown.",
+      "question": "Who should Alex believe?",
+      "possible_answers": [
+        { "correct": false, "response": "The one with more followers must be right" },
+        { "correct": false, "response": "Neither - all news is fake now" },
+        { "correct": true, "response": "Compare both accounts and look for evidence before deciding" }
+      ]
+    },
+    {
+      "scenario": "Alex sees a message saying a free upgrade will make his board twice as fast.",
+      "question": "Should he accept?",
+      "possible_answers": [
+        { "correct": false, "response": "Yes - free upgrades are always good" },
+        { "correct": true, "response": "Be cautious - check who is offering it and what they want in return" },
+        { "correct": false, "response": "Reject all technology - it cannot be trusted" }
+      ]
+    },
+    {
+      "scenario": "A wall of screens shows a countdown claiming the city AI will reset everyone's data in one hour.",
+      "question": "What does Alex do?",
+      "possible_answers": [
+        { "correct": true, "response": "Stay calm and verify if the countdown is real or just fear tactics" },
+        { "correct": false, "response": "Panic and try to escape the city immediately" },
+        { "correct": false, "response": "Do nothing - if data resets it does not matter anyway" }
+      ]
+    },
+    {
+      "scenario": "Alex reaches the edge of the city. A sign reads: Beyond here, there are no screens. No AI. No answers. Only questions.",
+      "question": "What does Alex choose?",
+      "possible_answers": [
+        { "correct": true, "response": "Step forward - the ability to question is more valuable than being given answers" },
+        { "correct": false, "response": "Turn back - life without AI telling you what is true is too scary" },
+        { "correct": false, "response": "Wait for someone else to go first and tell him what is out there" }
+      ]
+    }
+  ]
+}

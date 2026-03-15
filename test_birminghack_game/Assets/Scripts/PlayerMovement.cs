@@ -105,6 +105,12 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+
+        if (other.gameObject.CompareTag("QuestionCloud"))
+        {
+            StoryManager sm = FindFirstObjectByType<StoryManager>();
+            if (sm != null) sm.OnCloudTriggered();
+        }
     }
 
     void OnDisable()
