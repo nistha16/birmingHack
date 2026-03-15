@@ -4,29 +4,85 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float jump;
+    public float jump = 10f;
+    public float moveSpeed = 30f;
+    public float maxSpeed = 25f;
     private Rigidbody2D rb;
     private bool isGrounded;
     private InputAction jumpAction;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float backflipSpeed = 360f;
+    private bool isHoldingJump;
+    private bool isFlipping;
+
+    public Sprite skateSprite;
+    public Sprite jumpSprite;
+    private SpriteRenderer sr;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+
         jumpAction = new InputAction("Jump", binding: "<Keyboard>/space");
-        jumpAction.Enable();        
+        jumpAction.Enable();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (jumpAction.IsPressed() && isGrounded)
+        // gentle push forward, gravity handles downhill
+        if (rb.linearVelocity.x < maxSpeed)
         {
-            rb.AddForce(Vector2.up * jump);
+            rb.AddForce(Vector2.right * moveSpeed, ForceMode2D.Force);
+        }
+
+        // never go backward
+        if (rb.linearVelocity.x < 0f)
+        {
+            rb.linearVelocity = new Vector2(1f, rb.linearVelocity.y);
         }
     }
 
-    // OnCollisionEnter2D is called on collision with another collision object
+    void Update()
+    {
+        if (jumpAction.WasPressedThisFrame() && isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+            isHoldingJump = true;
+        }
+            // backflip while holding space in air
+        if (jumpAction.IsPressed() && !isGrounded && isHoldingJump)
+        {
+            isFlipping = true;
+            transform.Rotate(0f, 0f, backflipSpeed * Time.deltaTime);
+        }
+
+        // release space — stop flipping
+        if (jumpAction.WasReleasedThisFrame())
+        {
+            isHoldingJump = false;
+        }
+
+        // land — reset rotation
+        if (isGrounded && isFlipping)
+        {
+            transform.rotation = Quaternion.identity;
+            isFlipping = false;
+        }
+        if (!isGrounded)
+        {
+            sr.sprite = jumpSprite;
+        }
+        else
+        {
+            sr.sprite = skateSprite;
+        }
+
+        
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -35,7 +91,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // OnCollisionEnter2D is called on leaving collision from another collision object
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -50,5 +105,10 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+    }
+
+    void OnDisable()
+    {
+        jumpAction.Disable();
     }
 }

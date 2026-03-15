@@ -7,9 +7,9 @@ public class TerrainChunk : MonoBehaviour
     [Header("Terrain Settings")]
     public int points = 10;
     public float spacing = 1f;
-    public float amplitude = 4f;
+    public float amplitude = 2f;
     public float frequency = 0.2f;
-    public float slope = 0.05f;
+    public float slope = 0.01f;
     public float depth = 10f;
 
     private SpriteShapeController shape;
@@ -110,7 +110,7 @@ public class TerrainChunk : MonoBehaviour
 
     [Header("Macro Settings")]
     public float macroFrequency = 0.01f; // Controls how often "Biomes" change
-    public float macroExponent = 2.0f;    // Higher = sharper transitions between flat/steep
+    public float macroExponent = 1.0f;    // Higher = sharper transitions between flat/steep
 
     public void Generate(float perlinStartX, float startY)
     {
@@ -136,8 +136,8 @@ public class TerrainChunk : MonoBehaviour
             float yFlat = flatHeight - flatSlope;
 
             // 3. BLACK RUN PROFILE CALCULATIONS
-            float steepHeight = Mathf.PerlinNoise(worldX * frequency * 1.5f, 100f) * (amplitude * 2.5f);
-            float steepSlope = worldX * (slope * 3.0f); // Massive downhill push
+            float steepHeight = Mathf.PerlinNoise(worldX * frequency * 1.5f, 100f) * (amplitude * 1.0f);
+            float steepSlope = worldX * (slope * 1.0f); // Massive downhill push
             float ySteep = steepHeight - steepSlope;
 
             // 4. THE BLEND

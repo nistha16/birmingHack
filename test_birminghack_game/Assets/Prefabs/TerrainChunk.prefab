@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7785147810142670975}
   m_Layer: 0
   m_Name: TerrainChunk
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,3 +246,5 @@ MonoBehaviour:
   frequency: 0.03
   slope: 0.15
   depth: 20
+  macroFrequency: 0.01
+  macroExponent: 1
