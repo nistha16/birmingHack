@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed = 25f;
     public float backflipSpeed = 360f;
     public float boostForce = 15f;
+    public float landingAngleTolerance = 40f;
 
     [Header("Sprite References")]
     public Sprite skateSprite;
@@ -42,6 +43,16 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (gm.currentState != GameState.Playing)
+        {
+            rb.simulated = false;
+            return;
+        }
+        else
+        {
+            rb.simulated = true;
+        }
+        
         rb.linearVelocity = rb.linearVelocity.normalized * Mathf.Clamp(rb.linearVelocity.magnitude, minSpeed, maxSpeed);
         
         // gentle push forward, gravity handles downhill
@@ -126,6 +137,23 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+
+            // surface normal
+            Vector2 groundNormal = other.contacts[0].normal;
+
+            // convert normal to slope angle
+            float groundAngle = Mathf.Atan2(groundNormal.x, groundNormal.y) * Mathf.Rad2Deg;
+
+            // player rotation
+            float playerAngle = transform.eulerAngles.z;
+
+            // shortest difference between angles
+            float angleDifference = Mathf.Abs(Mathf.DeltaAngle(playerAngle, groundAngle));
+
+            if (angleDifference > landingAngleTolerance)
+            {
+                gm.SetState(GameState.GameOver);
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void OnGoHome()
     {
-        // SceneManager.LoadScene(0);  // Reset the whole scene
-        // SetState(GameState.MainMenu);
+        SceneManager.LoadScene(0);  // Reset the whole scene
+        SetState(GameState.MainMenu);
     }
 }

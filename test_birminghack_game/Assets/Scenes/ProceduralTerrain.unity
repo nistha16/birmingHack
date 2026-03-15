@@ -2085,7 +2085,8 @@ MonoBehaviour:
   minSpeed: 3
   maxSpeed: 15
   backflipSpeed: 360
-  boostForce: 25
+  boostForce: 35
+  landingAngleTolerance: 45
   skateSprite: {fileID: 4281637774074219296, guid: c532530133ae0475f9c6457701cfb6c1, type: 3}
   jumpSprite: {fileID: 357006442158401228, guid: d11fd0c3fe349411094bc783df37cbc1, type: 3}
 --- !u!70 &990744504
