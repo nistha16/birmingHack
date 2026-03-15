@@ -54,7 +54,7 @@ public class TerrainManager : MonoBehaviour
 
     void SpawnChunk()
     {
-        Vector3 spawnPos = new Vector3(lastChunkEndX + chunkSpacing, lastChunkEndY, 0f);
+        Vector3 spawnPos = new Vector3(lastChunkEndX + chunkSpacing, lastChunkEndY, 1f);
 
         GameObject obj = Instantiate(chunkPrefab, spawnPos, Quaternion.identity);
         TerrainChunk chunk = obj.GetComponent<TerrainChunk>();

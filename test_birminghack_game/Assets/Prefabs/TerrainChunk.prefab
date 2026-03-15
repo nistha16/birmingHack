@@ -246,3 +246,5 @@ MonoBehaviour:
   frequency: 0.03
   slope: 0.15
   depth: 20
+  macroFrequency: 0.01
+  macroExponent: 2

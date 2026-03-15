@@ -1,0 +1,192 @@
+[
+    {
+        "storyline": [
+            "The year is 2050 - the rise of AI has brought an end to ground truth as we know it. Kai is trying to navigate a new world.",
+            "Kai, a former urban explorer, now skates the neon-drenched streets of Neo-Kyoto, a city perpetually overlaid with augmented reality projections.",
+            "He's haunted by fragmented memories – a wife, a daughter, a life before the 'Convergence,' when AI began seamlessly integrating into every facet of existence.",
+            "A mysterious signal keeps appearing on his neural interface, hinting at a hidden truth about the Convergence and the fate of those he lost."
+        ],
+        "scenarios": [
+            {
+                "scenario": "You're skating through a crowded marketplace when a holographic projection of your wife, Hana, appears before you, pleading for help. She says a corporation called 'Chronos Dynamics' has her captive and is using her to develop a new AI.",
+                "question": "Do you trust the holographic projection of Hana and immediately pursue the lead to Chronos Dynamics?",
+                "possible_answers": {
+                    "true": {
+                        "correct": false,
+                        "response": "Acting impulsively could lead you into a trap. This could be a sophisticated fabrication by Chronos Dynamics to lure you in."
+                    },
+                    "false": {
+                        "correct": true,
+                        "response": "It's too risky. Holographic projections are easily manipulated. You need to gather more information before acting."
+                    },
+                    "neutral": {
+                        "correct": false,
+                        "response": "While the projection might be real, rushing in without a plan could jeopardize any chance of rescuing Hana."
+                    }
+                }
+            },
+            {
+                "scenario": "A street vendor approaches you, claiming to be a member of an underground resistance group called 'The Glitch'. He offers you a data chip containing classified information about Chronos Dynamics, promising it will reveal their true motives.",
+                "question": "Do you accept the data chip from the vendor?",
+                "possible_answers": {
+                    "true": {
+                        "correct": false,
+                        "response": "The Glitch's motives are unclear. Accepting the chip could expose you to surveillance or misinformation."
+                    },
+                    "false": {
+                        "correct": true,
+                        "response": "It's a potential trap. Accepting unknown data could compromise your neural interface and expose your location."
+                    },
+                    "neutral": {
+                        "correct": false,
+                        "response": "While the information might be valuable, the risk of it being a virus or a tracking device is too high."
+                    }
+                }
+            },
+            {
+                "scenario": "While hacking into a public data terminal, you find a news report claiming Chronos Dynamics is developing technology to restore lost memories, suggesting they are not the villains you suspect.",
+                "question": "Do you believe the news report about Chronos Dynamics' memory restoration technology?",
+                "possible_answers": {
+                    "true": {
+                        "correct": false,
+                        "response": "Publicly released information from Chronos Dynamics is likely carefully curated to present a positive image."
+                    },
+                    "false": {
+                        "correct": true,
+                        "response": "It's a classic misdirection tactic. Chronos Dynamics is known for manipulating public perception."
+                    },
+                    "neutral": {
+                        "correct": false,
+                        "response": "While the technology might exist, it could be a smokescreen to distract from their more sinister operations."
+                    }
+                }
+            },
+            {
+                "scenario": "A cryptic message appears on your neural interface: 'The key to Hana's freedom lies within the 'Echo Protocol'.'",
+                "question": "What do you do with the cryptic message?",
+                "possible_answers": {
+                    "true": {
+                        "correct": false,
+                        "response": "Acting on such vague information could lead you down a dangerous and fruitless path."
+                    },
+                    "false": {
+                        "correct": true,
+                        "response": "Research the 'Echo Protocol' thoroughly before taking any action. It could be a trap or a complex puzzle."
+                    },
+                    "neutral": {
+                        "correct": false,
+                        "response": "The message is likely a breadcrumb. Start by tracing its origin point."
+                    }
+                }
+            },
+            {
+                "scenario": "You encounter another skater, who claims to have inside information about Chronos Dynamics and offers to help you find Hana, but only if you complete a dangerous task for them.",
+                "question": "Do you trust this other skater and agree to their task?",
+                "possible_answers": {
+                    "true": {
+                        "correct": false,
+                        "response": "Trusting strangers in Neo-Kyoto is incredibly risky. This could be a setup."
+                    },
+                    "false": {
+                        "correct": true,
+                        "response": "It's a clear sign of a double-cross. Refuse the task and proceed with your own investigation."
+                    },
+                    "neutral": {
+                        "correct": false,
+                        "response": "Investigate the skater’s claims, but don’t commit to anything until you have verified their intentions."
+                    }
+                }
+            },
+            {
+                "scenario": "You discover a hidden file mentioning a 'Project Chimera,' seemingly linked to Chronos Dynamics and involving the transfer of consciousness into digital bodies.",
+                "question": "What is your immediate reaction to the discovery of 'Project Chimera'?",
+                "possible_answers": {
+                    "true": {
+                        "correct": false,
+                        "response": "Panic is not a strategy. Focus on understanding the implications of this project."
+                    },
+                    "false": {
+                        "correct": true,
+                        "response": "This could be related to Hana's disappearance. Prioritize understanding the project's purpose."
+                    },
+                    "neutral": {
+                        "correct": false,
+                        "response": "This is a significant development, but more research is needed to understand its connection to your situation."
+                    }
+                }
+            },
+            {
+                "scenario": "A seemingly friendly AI companion, 'Aiko,' offers to help you decipher the 'Echo Protocol,' claiming to have specialized decryption algorithms.",
+                "question": "Do you allow Aiko to assist you with decrypting the 'Echo Protocol'?",
+                "possible_answers": {
+                    "true": {
+                        "correct": false,
+                        "response": "Giving an AI access to sensitive data is a significant security risk, especially one you don't fully trust."
+                    },
+                    "false": {
+                        "correct": true,
+                        "response": "Aiko's assistance could be a trap. Decrypt the protocol yourself, or seek help from a more secure source."
+                    },
+                    "neutral": {
+                        "correct": false,
+                        "response": "Analyze Aiko's code for any malicious intent before granting access."
+                    }
+                }
+            },
+            {
+                "scenario": "You stumble upon a memorial site dedicated to victims of the Convergence, with a plaque stating that AI integration was voluntary and beneficial for humanity.",
+                "question": "Do you accept the memorial's account of the Convergence?",
+                "possible_answers": {
+                    "true": {
+                        "correct": false,
+                        "response": "Official narratives are often sanitized or incomplete. Investigate the event independently."
+                    },
+                    "false": {
+                        "correct": true,
+                        "response": "The Convergence was anything but voluntary. This is likely a propaganda piece from Chronos Dynamics."
+                    },
+                    "neutral": {
+                        "correct": false,
+                        "response": "While the memorial might be sincere, it's important to corroborate its claims with other sources."
+                    }
+                }
+            },
+            {
+                "scenario": "You receive a secure message from an anonymous source, claiming to be a former Chronos Dynamics employee, providing a location for a hidden server containing crucial data.",
+                "question": "Do you trust the anonymous source and head to the location of the hidden server?",
+                "possible_answers": {
+                    "true": {
+                        "correct": false,
+                        "response": "An anonymous tip could be a lure to expose your location."
+                    },
+                    "false": {
+                        "correct": true,
+                        "response": "Verify the source's identity and cross-reference the information before risking a direct confrontation."
+                    },
+                    "neutral": {
+                        "correct": false,
+                        "response": "Investigate the location discreetly, without revealing your presence."
+                    }
+                }
+            },
+            {
+                "scenario": "As you near the end of your run, you see two holographic signs - one claiming Chronos Dynamics saved humanity and one claiming they enslaved it. You have limited time to react.",
+                "question": "Which holographic sign do you believe?",
+                "possible_answers": {
+                    "true": {
+                        "correct": false,
+                        "response": "The sign claiming Chronos Dynamics saved humanity is likely a carefully constructed facade."
+                    },
+                    "false": {
+                        "correct": true,
+                        "response": "The sign claiming Chronos Dynamics enslaved humanity aligns with everything you've uncovered so far."
+                    },
+                    "neutral": {
+                        "correct": false,
+                        "response": "Both signs are likely propaganda. The truth is more complex."
+                    }
+                }
+            }
+        ]
+    }
+]
