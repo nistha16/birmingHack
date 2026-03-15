@@ -1,99 +1,303 @@
 {
-  "storyline": [
-    "The year is 2050 - the rise of AI has brought an end to ground truth as we know it. Alex is trying to navigate a new world. He cannot differentiate what's real and fake.",
-    "The city runs on information. Every screen, every voice, every message could be real or generated.",
-    "Alex grabs his board. The only way to find the truth is to keep moving.",
-    "But the further he goes, the harder it gets to tell what's real."
-  ],
-  "scenarios": [
+  "stories": [
     {
-      "scenario": "A news ticker scrolls across a building: a new virus has been detected in the city.",
-      "question": "What do you believe?",
-      "possible_answers": [
-        { "correct": true, "response": "Check the city health department records before panicking" },
-        { "correct": false, "response": "It must be true - share it with everyone immediately" },
-        { "correct": false, "response": "Ignore all health warnings - they are always fake" }
+      "storyline": [
+        "The year is 2050 - the rise of AI has brought an end to ground truth as we know it. Alex is trying to navigate a new world. He cannot differentiate what's real and fake.",
+        "The city runs on information. Every screen, every voice, every message could be real or generated.",
+        "Alex grabs his board. The only way to find the truth is to keep moving.",
+        "But the further he goes, the harder it gets to tell what's real."
+      ],
+      "scenarios": [
+        {
+          "scenario": "A news ticker scrolls across a building: a new virus has been detected in the city.",
+          "question": "What do you believe?",
+          "possible_answers": [
+            { "correct": true, "response": "Check the city health department records before panicking" },
+            { "correct": false, "response": "It must be true - share it with everyone immediately" },
+            { "correct": false, "response": "Ignore all health warnings - they are always fake" }
+          ]
+        },
+        {
+          "scenario": "A voice from a speaker claims the government has shut down all schools permanently.",
+          "question": "How do you respond?",
+          "possible_answers": [
+            { "correct": false, "response": "Schools are useless anyway - AI teaches everything now" },
+            { "correct": true, "response": "Look for an official source before accepting this as fact" },
+            { "correct": false, "response": "Start protesting immediately based on this announcement" }
+          ]
+        },
+        {
+          "scenario": "A stranger hands Alex a device showing a video of the mayor saying something shocking.",
+          "question": "What should Alex do?",
+          "possible_answers": [
+            { "correct": false, "response": "Believe it - video is always real" },
+            { "correct": false, "response": "Destroy the device so nobody sees it" },
+            { "correct": true, "response": "Consider that the video could be a deepfake and verify it" }
+          ]
+        },
+        {
+          "scenario": "A popular social feed says clean water will run out in 24 hours.",
+          "question": "What is the smart move?",
+          "possible_answers": [
+            { "correct": false, "response": "Hoard as much water as possible right now" },
+            { "correct": true, "response": "Check if the claim comes from a verified source before reacting" },
+            { "correct": false, "response": "Water cannot run out so ignore it completely" }
+          ]
+        },
+        {
+          "scenario": "An AI assistant tells Alex that his friend has been spreading misinformation.",
+          "question": "What should Alex do?",
+          "possible_answers": [
+            { "correct": false, "response": "Cut off his friend immediately - AI is always right" },
+            { "correct": true, "response": "Talk to his friend directly and hear their side" },
+            { "correct": false, "response": "Report his friend to the authorities without asking" }
+          ]
+        },
+        {
+          "scenario": "A headline reads: AI has solved climate change. The planet is saved.",
+          "question": "How should Alex react?",
+          "possible_answers": [
+            { "correct": false, "response": "Celebrate - no need to worry about the environment anymore" },
+            { "correct": false, "response": "Climate change was never real in the first place" },
+            { "correct": true, "response": "Be hopeful but look into what was actually done and by whom" }
+          ]
+        },
+        {
+          "scenario": "Two different news sources give opposite stories about a protest downtown.",
+          "question": "Who should Alex believe?",
+          "possible_answers": [
+            { "correct": false, "response": "The one with more followers must be right" },
+            { "correct": false, "response": "Neither - all news is fake now" },
+            { "correct": true, "response": "Compare both accounts and look for evidence before deciding" }
+          ]
+        },
+        {
+          "scenario": "Alex sees a message saying a free upgrade will make his board twice as fast.",
+          "question": "Should he accept?",
+          "possible_answers": [
+            { "correct": false, "response": "Yes - free upgrades are always good" },
+            { "correct": true, "response": "Be cautious - check who is offering it and what they want in return" },
+            { "correct": false, "response": "Reject all technology - it cannot be trusted" }
+          ]
+        },
+        {
+          "scenario": "A wall of screens shows a countdown claiming the city AI will reset everyone's data in one hour.",
+          "question": "What does Alex do?",
+          "possible_answers": [
+            { "correct": true, "response": "Stay calm and verify if the countdown is real or just fear tactics" },
+            { "correct": false, "response": "Panic and try to escape the city immediately" },
+            { "correct": false, "response": "Do nothing - if data resets it does not matter anyway" }
+          ]
+        },
+        {
+          "scenario": "Alex reaches the edge of the city. A sign reads: Beyond here, there are no screens. No AI. No answers. Only questions.",
+          "question": "What does Alex choose?",
+          "possible_answers": [
+            { "correct": true, "response": "Step forward - the ability to question is more valuable than being given answers" },
+            { "correct": false, "response": "Turn back - life without AI telling you what is true is too scary" },
+            { "correct": false, "response": "Wait for someone else to go first and tell him what is out there" }
+          ]
+        }
       ]
     },
     {
-      "scenario": "A voice from a speaker claims the government has shut down all schools permanently.",
-      "question": "How do you respond?",
-      "possible_answers": [
-        { "correct": false, "response": "Schools are useless anyway - AI teaches everything now" },
-        { "correct": true, "response": "Look for an official source before accepting this as fact" },
-        { "correct": false, "response": "Start protesting immediately based on this announcement" }
+      "storyline": [
+        "The year is 2050 - the rise of AI has brought an end to ground truth as we know it. Maya is trying to navigate a new world. She cannot differentiate what's real and fake.",
+        "Maya works as a data courier. Her job is to deliver verified information across the city.",
+        "But someone has been tampering with her deliveries. The truth she carries might already be corrupted.",
+        "She jumps on her board. The only way to find out is to trace the chain back to the source."
+      ],
+      "scenarios": [
+        {
+          "scenario": "Maya receives a delivery request from an anonymous sender claiming to be a hospital.",
+          "question": "Should she accept the job?",
+          "possible_answers": [
+            { "correct": true, "response": "Verify the hospital's identity through the city registry before accepting" },
+            { "correct": false, "response": "Accept it - hospitals always need urgent deliveries" },
+            { "correct": false, "response": "Refuse all anonymous requests - they are always scams" }
+          ]
+        },
+        {
+          "scenario": "Her delivery tablet shows two conflicting routes. One says the bridge is closed, the other says it is open.",
+          "question": "How does Maya decide?",
+          "possible_answers": [
+            { "correct": false, "response": "Take the longer route - better safe than sorry" },
+            { "correct": true, "response": "Check the city traffic system for a live update on the bridge status" },
+            { "correct": false, "response": "Ignore both and find her own route" }
+          ]
+        },
+        {
+          "scenario": "A fellow courier warns Maya that a new AI virus can steal data from delivery tablets.",
+          "question": "What should Maya do?",
+          "possible_answers": [
+            { "correct": false, "response": "Throw away her tablet immediately to be safe" },
+            { "correct": false, "response": "Ignore the warning - couriers always exaggerate" },
+            { "correct": true, "response": "Research the claim and update her security software as a precaution" }
+          ]
+        },
+        {
+          "scenario": "Maya notices the data package she is carrying has been modified. The timestamp does not match.",
+          "question": "What does she do?",
+          "possible_answers": [
+            { "correct": true, "response": "Flag the package as potentially tampered and notify the recipient" },
+            { "correct": false, "response": "Deliver it anyway - it is not her problem" },
+            { "correct": false, "response": "Delete the package entirely so nobody gets bad data" }
+          ]
+        },
+        {
+          "scenario": "A billboard claims that all data couriers will be replaced by drones next month.",
+          "question": "How should Maya react?",
+          "possible_answers": [
+            { "correct": false, "response": "Quit her job now before she gets fired" },
+            { "correct": true, "response": "Check if the announcement comes from the courier guild or an unreliable source" },
+            { "correct": false, "response": "Sabotage the drones to protect her job" }
+          ]
+        },
+        {
+          "scenario": "A client offers Maya triple pay to deliver a package without scanning its contents.",
+          "question": "Should she take it?",
+          "possible_answers": [
+            { "correct": false, "response": "Yes - triple pay is too good to pass up" },
+            { "correct": false, "response": "Report the client to the police immediately" },
+            { "correct": true, "response": "Decline - unscanned packages could contain misinformation or illegal data" }
+          ]
+        },
+        {
+          "scenario": "Maya finds a message hidden in her latest delivery that reads: Trust no one. The network is compromised.",
+          "question": "What does she do?",
+          "possible_answers": [
+            { "correct": false, "response": "Trust the message completely and go off the grid" },
+            { "correct": true, "response": "Investigate carefully - someone might be trying to help or trying to scare her" },
+            { "correct": false, "response": "Delete the message and pretend she never saw it" }
+          ]
+        },
+        {
+          "scenario": "Two different AI systems give Maya conflicting safety ratings for the same neighbourhood.",
+          "question": "Which does she trust?",
+          "possible_answers": [
+            { "correct": false, "response": "The newer AI - it must be more accurate" },
+            { "correct": false, "response": "Neither - just avoid the neighbourhood entirely" },
+            { "correct": true, "response": "Cross-reference with real courier reports and local community updates" }
+          ]
+        },
+        {
+          "scenario": "Maya discovers that her own delivery history has been altered in the city database.",
+          "question": "What should she do?",
+          "possible_answers": [
+            { "correct": true, "response": "Document the changes with screenshots and report it to the courier guild" },
+            { "correct": false, "response": "Alter it back herself - fight fire with fire" },
+            { "correct": false, "response": "Ignore it - databases get corrupted all the time" }
+          ]
+        },
+        {
+          "scenario": "Maya reaches the source of the data corruption. A screen asks: Do you want to know who has been altering your deliveries?",
+          "question": "What does Maya choose?",
+          "possible_answers": [
+            { "correct": true, "response": "Yes - but verify the answer independently before acting on it" },
+            { "correct": false, "response": "No - some truths are better left unknown" },
+            { "correct": false, "response": "Yes - and punish whoever it is without asking questions" }
+          ]
+        }
       ]
     },
     {
-      "scenario": "A stranger hands Alex a device showing a video of the mayor saying something shocking.",
-      "question": "What should Alex do?",
-      "possible_answers": [
-        { "correct": false, "response": "Believe it - video is always real" },
-        { "correct": false, "response": "Destroy the device so nobody sees it" },
-        { "correct": true, "response": "Consider that the video could be a deepfake and verify it" }
-      ]
-    },
-    {
-      "scenario": "A popular social feed says clean water will run out in 24 hours.",
-      "question": "What is the smart move?",
-      "possible_answers": [
-        { "correct": false, "response": "Hoard as much water as possible right now" },
-        { "correct": true, "response": "Check if the claim comes from a verified source before reacting" },
-        { "correct": false, "response": "Water cannot run out so ignore it completely" }
-      ]
-    },
-    {
-      "scenario": "An AI assistant tells Alex that his friend has been spreading misinformation.",
-      "question": "What should Alex do?",
-      "possible_answers": [
-        { "correct": false, "response": "Cut off his friend immediately - AI is always right" },
-        { "correct": true, "response": "Talk to his friend directly and hear their side" },
-        { "correct": false, "response": "Report his friend to the authorities without asking" }
-      ]
-    },
-    {
-      "scenario": "A headline reads: AI has solved climate change. The planet is saved.",
-      "question": "How should Alex react?",
-      "possible_answers": [
-        { "correct": false, "response": "Celebrate - no need to worry about the environment anymore" },
-        { "correct": false, "response": "Climate change was never real in the first place" },
-        { "correct": true, "response": "Be hopeful but look into what was actually done and by whom" }
-      ]
-    },
-    {
-      "scenario": "Two different news sources give opposite stories about a protest downtown.",
-      "question": "Who should Alex believe?",
-      "possible_answers": [
-        { "correct": false, "response": "The one with more followers must be right" },
-        { "correct": false, "response": "Neither - all news is fake now" },
-        { "correct": true, "response": "Compare both accounts and look for evidence before deciding" }
-      ]
-    },
-    {
-      "scenario": "Alex sees a message saying a free upgrade will make his board twice as fast.",
-      "question": "Should he accept?",
-      "possible_answers": [
-        { "correct": false, "response": "Yes - free upgrades are always good" },
-        { "correct": true, "response": "Be cautious - check who is offering it and what they want in return" },
-        { "correct": false, "response": "Reject all technology - it cannot be trusted" }
-      ]
-    },
-    {
-      "scenario": "A wall of screens shows a countdown claiming the city AI will reset everyone's data in one hour.",
-      "question": "What does Alex do?",
-      "possible_answers": [
-        { "correct": true, "response": "Stay calm and verify if the countdown is real or just fear tactics" },
-        { "correct": false, "response": "Panic and try to escape the city immediately" },
-        { "correct": false, "response": "Do nothing - if data resets it does not matter anyway" }
-      ]
-    },
-    {
-      "scenario": "Alex reaches the edge of the city. A sign reads: Beyond here, there are no screens. No AI. No answers. Only questions.",
-      "question": "What does Alex choose?",
-      "possible_answers": [
-        { "correct": true, "response": "Step forward - the ability to question is more valuable than being given answers" },
-        { "correct": false, "response": "Turn back - life without AI telling you what is true is too scary" },
-        { "correct": false, "response": "Wait for someone else to go first and tell him what is out there" }
+      "storyline": [
+        "The year is 2050 - the rise of AI has brought an end to ground truth as we know it. Jordan is trying to navigate a new world. They cannot differentiate what's real and fake.",
+        "Jordan is a street artist. Their murals used to tell stories. Now AI generates art faster than any human.",
+        "But someone is using AI art to spread propaganda across the city walls.",
+        "Jordan grabs their board. If they can find the source, they can take back the city's walls."
+      ],
+      "scenarios": [
+        {
+          "scenario": "Jordan sees a new mural on a building. It looks hand-painted but the style is too perfect.",
+          "question": "Is it AI-generated?",
+          "possible_answers": [
+            { "correct": false, "response": "It is perfect so it must be human - AI cannot be that good" },
+            { "correct": true, "response": "Check for an artist signature and look for subtle patterns that AI tends to repeat" },
+            { "correct": false, "response": "It does not matter - art is art regardless of who made it" }
+          ]
+        },
+        {
+          "scenario": "A gallery owner offers to display Jordan's art but wants to enhance it with AI first.",
+          "question": "Should Jordan agree?",
+          "possible_answers": [
+            { "correct": true, "response": "Discuss what enhancements are planned and ensure the original message stays intact" },
+            { "correct": false, "response": "Refuse completely - AI should never touch human art" },
+            { "correct": false, "response": "Let the AI change whatever it wants - galleries know best" }
+          ]
+        },
+        {
+          "scenario": "Jordan finds a mural promoting a political candidate with false statistics about crime rates.",
+          "question": "What should they do?",
+          "possible_answers": [
+            { "correct": false, "response": "Paint over it immediately - misinformation must be destroyed" },
+            { "correct": true, "response": "Document it and share the real statistics alongside the mural" },
+            { "correct": false, "response": "Leave it - people should decide for themselves what to believe" }
+          ]
+        },
+        {
+          "scenario": "A group of artists asks Jordan to join a collective that creates counter-propaganda using AI.",
+          "question": "Should Jordan join?",
+          "possible_answers": [
+            { "correct": false, "response": "Yes - fight misinformation with more misinformation" },
+            { "correct": false, "response": "No - all propaganda is wrong even if it is for a good cause" },
+            { "correct": true, "response": "Join but insist on using AI to amplify truth rather than create counter-propaganda" }
+          ]
+        },
+        {
+          "scenario": "Jordan's latest mural is copied by an AI and spread across the city with a different message attached.",
+          "question": "How should Jordan respond?",
+          "possible_answers": [
+            { "correct": false, "response": "Stop creating art - it will just be stolen and twisted" },
+            { "correct": true, "response": "Watermark future works and publicly correct the altered message" },
+            { "correct": false, "response": "Create a virus to destroy all copies of the stolen art" }
+          ]
+        },
+        {
+          "scenario": "A child asks Jordan if the inspirational quote on a wall is real or AI-generated.",
+          "question": "What does Jordan say?",
+          "possible_answers": [
+            { "correct": false, "response": "It does not matter where it came from - just believe it" },
+            { "correct": false, "response": "Never trust anything on walls anymore" },
+            { "correct": true, "response": "Good question - lets look up who originally said it together" }
+          ]
+        },
+        {
+          "scenario": "Jordan discovers that the propaganda murals are being funded by a tech company.",
+          "question": "What should Jordan do with this information?",
+          "possible_answers": [
+            { "correct": false, "response": "Blackmail the company for money" },
+            { "correct": true, "response": "Share the evidence with journalists and let the public decide" },
+            { "correct": false, "response": "Keep quiet - going against a tech company is too dangerous" }
+          ]
+        },
+        {
+          "scenario": "An AI art tool offers to create murals that automatically fact-check themselves.",
+          "question": "Is this a good idea?",
+          "possible_answers": [
+            { "correct": true, "response": "It could help but the fact-checking AI itself needs to be transparent and verifiable" },
+            { "correct": false, "response": "Yes - let AI handle truth so humans do not have to" },
+            { "correct": false, "response": "No - AI should have nothing to do with art or truth" }
+          ]
+        },
+        {
+          "scenario": "Jordan is offered a chance to paint the final mural on the city's last blank wall.",
+          "question": "What message should Jordan paint?",
+          "possible_answers": [
+            { "correct": false, "response": "Trust no one and nothing - the only safe choice" },
+            { "correct": false, "response": "AI is the enemy of truth" },
+            { "correct": true, "response": "Question everything. Verify. Think for yourself. Truth takes effort." }
+          ]
+        },
+        {
+          "scenario": "Jordan steps back to look at the finished mural. A crowd gathers. Someone asks: But how do we know this is true?",
+          "question": "What does Jordan answer?",
+          "possible_answers": [
+            { "correct": true, "response": "You don't - and that is exactly why you should always keep asking" },
+            { "correct": false, "response": "Because I painted it and I am human so it must be true" },
+            { "correct": false, "response": "It does not matter if it is true - what matters is how it makes you feel" }
+          ]
+        }
       ]
     }
   ]
