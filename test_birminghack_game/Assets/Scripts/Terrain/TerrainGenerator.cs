@@ -22,7 +22,7 @@ public class TerrainGenerator : MonoBehaviour
 
     float GetHeight(float x)
     {
-        return Mathf.PerlinNoise(x * frequency, 0) * amplitude - x * slope;
+        return Mathf.PerlinNoise((Random.Range(1f, 10f) + x) * frequency, 0) * amplitude - (Random.Range(1f, 10f) + x) * slope;
     }
 
     void GenerateTerrain()

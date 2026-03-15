@@ -4,20 +4,32 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("References")]
+    public GameManager gm;
+
+    [Header("Player Settings")]
     public float jump = 10f;
-    public float moveSpeed = 30f;
+    public float minSpeed = 30f;
     public float maxSpeed = 25f;
+    public float backflipSpeed = 360f;
+    public float boostForce = 15f;
+    public float landingAngleTolerance = 40f;
+
+    [Header("Sprite References")]
+    public Sprite skateSprite;
+    public Sprite jumpSprite;
+    
     private Rigidbody2D rb;
     private bool isGrounded;
     private InputAction jumpAction;
 
-    public float backflipSpeed = 360f;
     private bool isHoldingJump;
     private bool isFlipping;
 
-    public Sprite skateSprite;
-    public Sprite jumpSprite;
     private SpriteRenderer sr;
+
+    private float rotationAccumulated = 0f;
+    private float lastX = 0f;
 
 
     void Start()
@@ -31,16 +43,29 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // gentle push forward, gravity handles downhill
-        if (rb.linearVelocity.x < maxSpeed)
+        if (gm.currentState != GameState.Playing)
         {
-            rb.AddForce(Vector2.right * moveSpeed, ForceMode2D.Force);
+            rb.simulated = false;
+            return;
         }
+        else
+        {
+            rb.simulated = true;
+        }
+        
+        rb.linearVelocity = rb.linearVelocity.normalized * Mathf.Clamp(rb.linearVelocity.magnitude, minSpeed, maxSpeed);
+        
+        // gentle push forward, gravity handles downhill
+        // if (rb.linearVelocity.x < maxSpeed)
+        // {
+        //     rb.AddForce(Vector2.right * moveSpeed, ForceMode2D.Force);
+        // }
 
         // never go backward
         if (rb.linearVelocity.x < 0f)
         {
-            rb.linearVelocity = new Vector2(1f, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(0,0);
+            rb.AddForce(Vector2.right * minSpeed, ForceMode2D.Force);
         }
     }
 
@@ -48,15 +73,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jumpAction.WasPressedThisFrame() && isGrounded)
         {
+            rotationAccumulated = 0f;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
             rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
             isHoldingJump = true;
         }
-            // backflip while holding space in air
+        
+        // backflip while holding space in air
         if (jumpAction.IsPressed() && !isGrounded && isHoldingJump)
         {
             isFlipping = true;
-            transform.Rotate(0f, 0f, backflipSpeed * Time.deltaTime);
+
+            float rotationThisFrame = backflipSpeed * Time.deltaTime;
+            transform.Rotate(0f, 0f, rotationThisFrame);
+
+            rotationAccumulated += rotationThisFrame;
         }
 
         // release space — stop flipping
@@ -65,12 +96,23 @@ public class PlayerMovement : MonoBehaviour
             isHoldingJump = false;
         }
 
+        
+
         // land — reset rotation
         if (isGrounded && isFlipping)
         {
             transform.rotation = Quaternion.identity;
+
+            // check for completed flip
+            if (rotationAccumulated >= 360f)
+            {
+                rb.AddForce(Vector2.right * boostForce, ForceMode2D.Impulse);
+            }
+
+            rotationAccumulated = 0f;
             isFlipping = false;
         }
+
         if (!isGrounded)
         {
             sr.sprite = jumpSprite;
@@ -80,7 +122,14 @@ public class PlayerMovement : MonoBehaviour
             sr.sprite = skateSprite;
         }
 
-        
+        float distanceMoved = transform.position.x - lastX;
+
+        if (distanceMoved > 0)
+        {
+            gm.score += distanceMoved;
+        }
+
+        lastX = transform.position.x;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -88,6 +137,23 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+
+            // surface normal
+            Vector2 groundNormal = other.contacts[0].normal;
+
+            // convert normal to slope angle
+            float groundAngle = Mathf.Atan2(groundNormal.x, groundNormal.y) * Mathf.Rad2Deg;
+
+            // player rotation
+            float playerAngle = transform.eulerAngles.z;
+
+            // shortest difference between angles
+            float angleDifference = Mathf.Abs(Mathf.DeltaAngle(playerAngle, groundAngle));
+
+            if (angleDifference > landingAngleTolerance)
+            {
+                gm.SetState(GameState.GameOver);
+            }
         }
     }
 

@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class PlayerTracker : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
+    [Header("References")]
+    public GameManager gameManager;
     public Transform target;          // player
+
+    [Header("Player Tracking Settings")]
     public float smoothTime = 0.25f;  // how quickly camera catches up
     public Vector3 offset;            // camera offset from player
 
@@ -16,6 +14,8 @@ public class PlayerTracker : MonoBehaviour
 
     void LateUpdate()
     {
+        // if (gameManager.currentState != GameState.Playing) return;
+        
         Vector3 targetPosition = target.position + offset;
 
         // Keep camera at a fixed depth
