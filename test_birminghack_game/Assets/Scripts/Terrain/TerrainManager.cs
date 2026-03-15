@@ -6,6 +6,10 @@ public class TerrainManager : MonoBehaviour
     [Header("References")]
     public Transform player;
     public GameObject chunkPrefab;
+    public GameManager gm;
+
+    [Header("Animation Settings")]
+    public float toggleVisibilitySpeed = 2f;
 
     [Header("Initial Settings")]
     public int initialChunks = 5;
@@ -38,6 +42,23 @@ public class TerrainManager : MonoBehaviour
 
     void Update()
     {
+        // if (gm.currentState == GameState.Playing)
+        // {
+        //     foreach (TerrainChunk chunk in chunks)
+        //     {
+        //         Vector3 destination = chunk.gameObject.transform.position + new Vector3(0, 15, 0);
+        //         Vector3.MoveTowards(transform.position, destination, toggleVisibilitySpeed * Time.deltaTime);
+        //     }
+        // }
+        // else
+        // {
+        //     foreach (TerrainChunk chunk in chunks)
+        //     {
+        //         Vector3 destination = chunk.gameObject.transform.position + new Vector3(0, -15, 0);
+        //         Vector3.MoveTowards(transform.position, destination, toggleVisibilitySpeed * Time.deltaTime);
+        //     }
+        // }
+
         // Spawn new chunks ahead
         if (player.position.x > lastChunkEndX - (spawnDistanceAhead * initialChunks))
         {
@@ -56,7 +77,10 @@ public class TerrainManager : MonoBehaviour
     {
         Vector3 spawnPos = new Vector3(lastChunkEndX + chunkSpacing, lastChunkEndY, 0f);
 
-        GameObject obj = Instantiate(chunkPrefab, spawnPos, Quaternion.identity);
+        // GameObject obj = Instantiate(chunkPrefab, spawnPos, Quaternion.identity, transform);
+        GameObject obj = Instantiate(chunkPrefab, transform);
+        obj.transform.localPosition = new Vector3(lastChunkEndX + chunkSpacing, lastChunkEndY, 0f);
+
         TerrainChunk chunk = obj.GetComponent<TerrainChunk>();
 
         // Generate chunk with continuity
@@ -70,5 +94,14 @@ public class TerrainManager : MonoBehaviour
         lastChunkEndY = chunk.GetEndHeight() + spawnPos.y - lastChunkEndY;
 
         chunks.Add(chunk);
+
+    }
+
+    void OnDestroy()
+    {
+        foreach(TerrainChunk chunk in chunks)
+        {
+            Destroy(chunk);
+        }
     }
 }

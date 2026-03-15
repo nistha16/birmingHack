@@ -4,19 +4,26 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("References")]
+    public GameManager gm;
+
+    [Header("Player Settings")]
     public float jump = 10f;
     public float moveSpeed = 30f;
     public float maxSpeed = 25f;
+    public float backflipSpeed = 360f;
+
+    [Header("Sprite References")]
+    public Sprite skateSprite;
+    public Sprite jumpSprite;
+    
     private Rigidbody2D rb;
     private bool isGrounded;
     private InputAction jumpAction;
 
-    public float backflipSpeed = 360f;
     private bool isHoldingJump;
     private bool isFlipping;
 
-    public Sprite skateSprite;
-    public Sprite jumpSprite;
     private SpriteRenderer sr;
 
 
